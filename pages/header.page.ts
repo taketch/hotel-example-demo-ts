@@ -60,17 +60,17 @@ export abstract class HeaderPage {
         this.logoutButton = page.locator('button').filter({ hasText: labels.logout });
     }
 
-    // URLから言語判定
+    // URLから言語判定（デフォルトはja）
     private getFromUrl(): LanguageOption {
+        // 環境変数を優先
+        const envLang = process.env.LANGUAGE;
+        if (envLang === 'en-US') return 'en-US';
+        if (envLang === 'ja') return 'ja';
+        
+        // URLから判定
         const url = this.page.url();
-
-        if (url.includes('/ja/')) {
-            return 'ja';
-        }
-        if (url.includes('/en-US')) {
-            return 'en-US';
-        }
-
+        if (url.includes('/en-US/')) return 'en-US';
+        
         return 'ja';
     }
 

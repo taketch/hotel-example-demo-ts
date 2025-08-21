@@ -3,7 +3,7 @@ import { Locator, Page } from '@playwright/test';
 export class PageUtils {
     // 表示要素取得の共通化
     static async waitAndGetText(locator: Locator): Promise<string> {
-        await locator.waitFor({ state: 'attached' });
+        await locator.waitFor({ state: 'attached', timeout: 30000 });
         return locator.innerText();
     }
 
