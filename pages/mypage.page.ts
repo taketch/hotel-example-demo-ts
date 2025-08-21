@@ -94,7 +94,7 @@ export class Mypage extends HeaderPage {
         this.birthdayValue = this.page.locator('p#birthday');
         this.notificationLabel = this.page.locator('h5').nth(7);
         this.notificationValue = this.page.locator('p#notification');
-        this.iconSettingButton = this.page.locator('a#icon-link.btn.btn-primary.btn-block.disabled');
+        this.iconSettingButton = this.page.locator('a#icon-link');
         this.deleteAccountButton = this.page.locator('button').filter({ hasText: LABELS[this.language].deleteAccountButton }); 
     }
 

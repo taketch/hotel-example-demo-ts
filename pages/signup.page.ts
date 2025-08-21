@@ -234,5 +234,6 @@ export class Signup extends HeaderPage {
         await this.telField.fill(tel);
         await this.birthdayField.fill(birthday);
         await this.registerButton.click();
+        await this.page.waitForTimeout(500);
     }
 }
