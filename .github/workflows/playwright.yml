@@ -2,7 +2,7 @@ name: Playwright Tests
 on:
   pull_request:
     paths:
-      - 'src/**'
+      - 'SRC/**'
 
 jobs:
   test:
