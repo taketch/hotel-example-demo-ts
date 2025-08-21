@@ -1,8 +1,17 @@
 import { Page, TestInfo } from '@playwright/test';
+import path from 'path';
 
 export class ScreenshotUtils {
   static async takeScreenshot(page: Page, testInfo: TestInfo): Promise<void> {
     await page.waitForTimeout(1000);
-    await page.screenshot({ path: `./test-results/${testInfo.file.split('/').pop()} - ${testInfo.title} - ${testInfo.project.name}.png`, fullPage: true });
+
+    const fileName = path.basename(testInfo.file);
+    const screenshotName = `${fileName} - ${testInfo.title} - ${testInfo.project.name}.png`;
+    const screenshotPath = path.join('test-results', screenshotName);
+
+    await page.screenshot({
+      path: screenshotPath,
+      fullPage: true
+    });
   }
 }
