@@ -227,12 +227,19 @@ export class Signup extends HeaderPage {
     // 会員登録
     async signup({ email, password, userName, address, tel, birthday }): Promise<void> {
         await this.emailField.fill(email);
+        await this.page.waitForTimeout(500);
         await this.passwordField.fill(password);
+        await this.page.waitForTimeout(500);
         await this.passwordConfirmationField.fill(password);
+        await this.page.waitForTimeout(500);
         await this.userNameField.fill(userName);
+        await this.page.waitForTimeout(500);
         await this.addressField.fill(address);
+        await this.page.waitForTimeout(500);
         await this.telField.fill(tel);
+        await this.page.waitForTimeout(500);
         await this.birthdayField.fill(birthday);
+        await this.page.waitForTimeout(500);
         await this.registerButton.click();
         await this.page.waitForTimeout(1000);
     }

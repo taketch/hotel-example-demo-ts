@@ -9,8 +9,9 @@ function expectedBirthday(birthday) {
     const date = new Date(birthday);
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
+    const monthE = date.toLocaleString('en-US', { month: 'long' });
     const day = date.getDate();
-    return `${year}年${month}月${day}日`;
+    return [`${year}年${month}月${day}日`,`${monthE} ${day}, ${year}`];
 }
 
 test.describe('マイページ画面テスト', () => {
@@ -39,6 +40,7 @@ test.describe('マイページ画面テスト', () => {
         await homepage.gotoSignupPage();
         // 会員登録
         await sighup.signup(signupUserInfo);
+        await page.waitForTimeout(1000);
     });
 
     test('マイページ画面への遷移の確認', async ({ page }, testInfo) => {
@@ -108,7 +110,7 @@ test.describe('マイページ画面テスト', () => {
         }
         // 生年月日
         const birthdayValue = await mypage.getBirthdayValue();
-        await expect(birthdayValue).toBe(expectedBirthday(signupUserInfo.birthday));
+        await expect(expectedBirthday(signupUserInfo.birthday)).toContain(birthdayValue);
         // お知らせ
         const notificationValue = await mypage.getNotificationValue();
         if (mypage.language === 'ja') {

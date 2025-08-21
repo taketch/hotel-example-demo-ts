@@ -19,7 +19,7 @@ const LABELS: Record<LanguageOption, LanguageLabels> = {
         loginButton: 'ログイン'
     },
     'en-US': {
-        h2: 'This site is a sandbox to practice test automation.',
+        h2: 'Login',
         email: 'Email',
         password: 'Password',
         loginButton: 'Login'

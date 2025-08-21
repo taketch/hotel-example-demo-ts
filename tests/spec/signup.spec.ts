@@ -4,15 +4,6 @@ import { Signup, LABELS } from '../../pages/signup.page.ts';
 import { Mypage } from '../../pages/mypage.page.ts';
 import { ScreenshotUtils } from '../utils/screenshotUtils';
 
-// 日付フォーマットを変換
-function expectedBirthday(birthday) {
-    const date = new Date(birthday);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${year}年${month}月${day}日`;
-}
-
 test.describe('会員登録画面テスト', () => {
     let homepage: HomePage;
     let signup: Signup;

@@ -43,7 +43,7 @@ export const LABELS: Record<LanguageOption, LanguageLabels> = {
         tel: 'Tel',
         gender: 'Gender',
         birthday: 'Date of birth',
-        notification: 'notification',
+        notification: 'Notification',
         iconSettingButton: 'Icon Setting',
         deleteAccountButton: 'Delete Account',
         deletedMessage: ''
