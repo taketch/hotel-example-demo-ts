@@ -1,0 +1,39 @@
+name: Playwright Tests
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+
+jobs:
+  test:
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        language: [ja, en-US]
+        browser: [chromium, firefox, webkit]
+        exclude:
+          - os: ubuntu-latest
+            browser: webkit
+          - os: windows-latest
+            browser: webkit
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests (${{ matrix.os }}-${{ matrix.language }}-${{ matrix.browser }})
+      env:
+        LANGUAGE: ${{ matrix.language }}
+      run: npx playwright test --project=${{ matrix.browser }}
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: report-${{ matrix.os }}-${{ matrix.language }}-${{ matrix.browser }}
+        path: playwright-report/
+        retention-days: 30

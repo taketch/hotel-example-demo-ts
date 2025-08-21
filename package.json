@@ -1,0 +1,22 @@
+{
+  "name": "playwright(ts)",
+  "version": "1.0.0",
+  "description": "[Hotel Planisphere](https://hotel-example-site.takeyaqa.dev/)",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taketch/hotel-example-demo-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taketch/hotel-example-demo-ts/issues"
+  },
+  "homepage": "https://github.com/taketch/hotel-example-demo-ts#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.1"
+  }
+}
